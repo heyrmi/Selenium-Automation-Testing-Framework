@@ -1,0 +1,8 @@
+# Ignore these files 
+.project
+.classpath
+.settings
+/.settings
+/extent-test-output
+/target
+/test-output
