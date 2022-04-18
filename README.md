@@ -11,3 +11,4 @@ This repo contains data driven framework which uses Page Object Model for testin
 - Can control browser
 - Remote and local Execution
 - Webdriver Manager
+- Elastic search and Kibana Support for live Reporting
