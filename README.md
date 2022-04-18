@@ -12,3 +12,9 @@ This repo contains data driven framework which uses Page Object Model for testin
 - Remote and local Execution
 - Webdriver Manager
 - Elastic search and Kibana Support for live Reporting
+
+
+## Credits
+
+- This project originally belongs to [Amuthan Shaktivel] (https://github.com/amuthansakthivel)
+- I have made a couple of changes in the BasePage and added Flipkart Test.
