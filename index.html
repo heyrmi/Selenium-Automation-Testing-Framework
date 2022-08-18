@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">Regression</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Aug 18, 2022 08:49:27 PM</span></a>
+<a href="#"><span class="badge badge-primary">Aug 18, 2022 08:58:45 PM</span></a>
 </li>
 </ul>
 </div>
@@ -76,7 +76,7 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<a class="dropdown-item" status="skip" href="#"><span>Skip</span><span class="status warning"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
@@ -96,25 +96,25 @@
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="fail" test-id="1"
+        <li class="test-item"  status="skip" test-id="1"
           author="Sachin Amuthan"
           tag="MINIREGRESSION REGRESSION"
           device="">
           <div class="test-detail">
             <p class="name">To check whether the amazon test is working or not</p>
             <p class="text-sm">
-              <span>8:49:30 PM</span> / <span>00:00:00:027</span>
-              <span class="badge fail-bg log float-right">Fail</span>
+              <span>8:58:48 PM</span> / <span>00:00:00:010</span>
+              <span class="badge skip-bg log float-right">Skip</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">To check whether the amazon test is working or not</h5>
-<span class='badge badge-success'>08.18.2022 8:49:30 PM</span>
-<span class='badge badge-danger'>08.18.2022 8:49:30 PM</span>
-<span class='badge badge-default'>00:00:00:027</span>
+<h5 class="test-status text-skip">To check whether the amazon test is working or not</h5>
+<span class='badge badge-success'>08.18.2022 8:58:48 PM</span>
+<span class='badge badge-danger'>08.18.2022 8:58:48 PM</span>
+<span class='badge badge-default'>00:00:00:010</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
 <span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
@@ -130,16 +130,53 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log skip-bg">Skip</span></td>
-        <td>8:49:30 PM</td>
+        <td>8:58:48 PM</td>
         <td>
           amazonTest is skipped
         </td>
       </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="skip" test-id="2"
+          author="Sachin Amuthan"
+          tag="MINIREGRESSION REGRESSION"
+          device="">
+          <div class="test-detail">
+            <p class="name">To check whether the amazon test is working or not</p>
+            <p class="text-sm">
+              <span>8:58:48 PM</span> / <span>00:00:00:002</span>
+              <span class="badge skip-bg log float-right">Skip</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-skip">To check whether the amazon test is working or not</h5>
+<span class='badge badge-success'>08.18.2022 8:58:48 PM</span>
+<span class='badge badge-danger'>08.18.2022 8:58:48 PM</span>
+<span class='badge badge-default'>00:00:00:002</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
+<span class='badge badge-default pointer float-right ml-1 et'><i class="fa fa-chevron-down"></i></span>
+<span class='badge badge-default pointer float-right ct'><i class="fa fa-chevron-up"></i></span>
+</div>
+<div class="m-t-15"><span class="badge badge-pill badge-default">Sachin</span>
+<span class="badge badge-pill badge-default">Amuthan</span>
+<span class="badge badge-pill badge-default">MINIREGRESSION</span>
+<span class="badge badge-pill badge-default">REGRESSION</span></div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
       <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>8:49:30 PM</td>
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>8:58:48 PM</td>
         <td>
-          amazonTest is failed
+          amazonTest is skipped
         </td>
       </tr>
   </tbody>
@@ -167,15 +204,15 @@
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log badge-danger'>1</span>
+<span class='badge log badge-skip'>2</span>
 </span>
 <p class="name">MINIREGRESSION</p>
-<p class="duration text-sm">1 tests</p>
+<p class="duration text-sm">2 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
 <h4>MINIREGRESSION</h4>
-<span status="fail" class='badge log badge-danger'>1 failed</span>
+<span status="skip" class='badge log badge-skip'>2 skipped</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -186,11 +223,18 @@
 </tr>
 </thead>
 <tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>20:49:30 PM</td>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>20:58:48 PM</td>
 <td>
 <a href="#" class="linked" test-id='1' id='1'>To check whether the amazon test is working or not</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>20:58:48 PM</td>
+<td>
+<a href="#" class="linked" test-id='2' id='2'>To check whether the amazon test is working or not</a>
 </td>
 </tr>
 </tbody>
@@ -200,15 +244,15 @@
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log badge-danger'>1</span>
+<span class='badge log badge-skip'>2</span>
 </span>
 <p class="name">REGRESSION</p>
-<p class="duration text-sm">1 tests</p>
+<p class="duration text-sm">2 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
 <h4>REGRESSION</h4>
-<span status="fail" class='badge log badge-danger'>1 failed</span>
+<span status="skip" class='badge log badge-skip'>2 skipped</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -219,11 +263,18 @@
 </tr>
 </thead>
 <tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>20:49:30 PM</td>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>20:58:48 PM</td>
 <td>
 <a href="#" class="linked" test-id='1' id='1'>To check whether the amazon test is working or not</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>20:58:48 PM</td>
+<td>
+<a href="#" class="linked" test-id='2' id='2'>To check whether the amazon test is working or not</a>
 </td>
 </tr>
 </tbody>
@@ -249,15 +300,15 @@
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log badge-danger'>1</span>
+<span class='badge log badge-skip'>2</span>
 </span>
 <p class="name">Sachin</p>
-<p class="duration text-sm">1 tests</p>
+<p class="duration text-sm">2 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
 <h4>Sachin</h4>
-<span status="fail" class='badge log badge-danger'>1 failed</span>
+<span status="skip" class='badge log badge-skip'>2 skipped</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -268,11 +319,18 @@
 </tr>
 </thead>
 <tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>20:49:30 PM</td>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>20:58:48 PM</td>
 <td>
 <a href="#" class="linked" test-id='1' id='1'>To check whether the amazon test is working or not</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>20:58:48 PM</td>
+<td>
+<a href="#" class="linked" test-id='2' id='2'>To check whether the amazon test is working or not</a>
 </td>
 </tr>
 </tbody>
@@ -282,15 +340,15 @@
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log badge-danger'>1</span>
+<span class='badge log badge-skip'>2</span>
 </span>
 <p class="name">Amuthan</p>
-<p class="duration text-sm">1 tests</p>
+<p class="duration text-sm">2 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
 <h4>Amuthan</h4>
-<span status="fail" class='badge log badge-danger'>1 failed</span>
+<span status="skip" class='badge log badge-skip'>2 skipped</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -301,11 +359,18 @@
 </tr>
 </thead>
 <tbody>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>20:49:30 PM</td>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>20:58:48 PM</td>
 <td>
 <a href="#" class="linked" test-id='1' id='1'>To check whether the amazon test is working or not</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="skip">
+<td><span class="badge log skip-bg">Skip</span></td>
+<td>20:58:48 PM</td>
+<td>
+<a href="#" class="linked" test-id='2' id='2'>To check whether the amazon test is working or not</a>
 </td>
 </tr>
 </tbody>
@@ -325,13 +390,13 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Aug 18, 2022 08:49:27 PM</h3>
+<h3>Aug 18, 2022 08:58:45 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Aug 18, 2022 08:49:30 PM</h3>
+<h3>Aug 18, 2022 08:58:48 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
@@ -343,7 +408,7 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Tests Failed</p>
-<h3>1</h3>
+<h3>0</h3>
 </div></div>
 </div>
 </div>
@@ -364,8 +429,8 @@
 </small>
 </div>
 <div>
-<small data-tooltip='100%'><b>1</b> tests failed,
-<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+<small data-tooltip='0%'><b>0</b> tests failed,
+<b>2</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
 </div>
@@ -384,8 +449,8 @@
 <div class="card-footer">
 <div><small data-tooltip='0%'><b>0</b> events passed</small></div>
 <div>
-<small data-tooltip='50%'><b>1</b> events failed,
-<b data-tooltip='%'>1</b> others
+<small data-tooltip='0%'><b>0</b> events failed,
+<b data-tooltip='%'>2</b> others
 </small>
 </div>
 </div>
@@ -401,7 +466,7 @@
 </div></div>
 <script>
 var timeline = {
-"To check whether the amazon test is working or not":0.027
+"To check whether the amazon test is working or not":0.01,"To check whether the amazon test is working or not":0.002
 };
 </script>
 <div class="row">
@@ -414,16 +479,16 @@ var timeline = {
 <tr>
 <td>Sachin</td>
 <td>0</td>
-<td>1</td>
 <td>0</td>
+<td>2</td>
 <td>0</td>
 <td>0%</td>
 </tr>
 <tr>
 <td>Amuthan</td>
 <td>0</td>
-<td>1</td>
 <td>0</td>
+<td>2</td>
 <td>0</td>
 <td>0%</td>
 </tr>
@@ -439,16 +504,16 @@ var timeline = {
 <tr>
 <td>MINIREGRESSION</td>
 <td>0</td>
-<td>1</td>
 <td>0</td>
+<td>2</td>
 <td>0</td>
 <td>0%</td>
 </tr>
 <tr>
 <td>REGRESSION</td>
 <td>0</td>
-<td>1</td>
 <td>0</td>
+<td>2</td>
 <td>0</td>
 <td>0%</td>
 </tr>
@@ -462,9 +527,9 @@ var timeline = {
 var statusGroup = {
 parentCount: 5,
 passParent: 0,
-failParent: 1,
+failParent: 0,
 warningParent: 0,
-skipParent: 0,
+skipParent: 2,
 childCount: 5,
 passChild: 0,
 failChild: 0,
@@ -479,9 +544,9 @@ skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
 passEvents: 0,
-failEvents: 1,
+failEvents: 0,
 warningEvents: 0,
-skipEvents: 1,
+skipEvents: 2,
 infoEvents: 0
 };
 </script>        </div>
