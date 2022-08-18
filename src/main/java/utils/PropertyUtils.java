@@ -23,7 +23,7 @@ public final class PropertyUtils {
 	private PropertyUtils() {}
 
 	static {
-		try(FileInputStream file = new FileInputStream(FrameworkConstants.getConfigFilePath())) {
+		try(FileInputStream file = new FileInputStream(FrameworkConstants.getCONFIGFILEPATH())) {
 			property.load(file);
 			for (Map.Entry<Object, Object> entry : property.entrySet()) {
 				CONFIGMAP.put(String.valueOf(entry.getKey()), String.valueOf(entry.getValue()).trim()); //remove the trailing and leading spaces

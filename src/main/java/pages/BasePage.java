@@ -3,6 +3,7 @@ package pages;
 import static enums.LogType.INFO;
 import static reports.FrameworkLogger.log;
 
+import java.time.Duration;
 import java.util.ArrayList;
 
 import org.openqa.selenium.By;
@@ -47,7 +48,7 @@ public class BasePage {
 	
 	protected void waitForElementToBeVisible(By by) {
 		WebElement element = DriverManager.getDriver().findElement(by);
-		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), FrameworkConstants.getExplicitwait());
+		WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(FrameworkConstants.getEXPLICITWAIT()));
 		wait.until(ExpectedConditions.visibilityOf(element));
 		log(INFO, "Waited for the element to be visible ");
 	}

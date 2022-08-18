@@ -1,6 +1,7 @@
 package constants;
 
 import enums.ConfigProperties;
+import lombok.Getter;
 import utils.PropertyUtils;
 
 /**
@@ -12,16 +13,14 @@ public final class FrameworkConstants {
 
 	private FrameworkConstants() {}
 	
-	private static final int EXPLICITWAIT = 10;
-	private static final String RESOURCESPATH = System.getProperty("user.dir")+"/Resources";
-	private static final String CHROMEDRIVERPATH = RESOURCESPATH+"/Drivers/chromedriver.exe";
-	private static final String GECKODRIVERPATH = RESOURCESPATH+"/Drivers/geckodriver.exe";
-	private static final String CONFIGFILEPATH = RESOURCESPATH+"/Config/config.properties";
-	private static final String EXCELPATH = RESOURCESPATH+"/Excel/testdata.xlsx";
-	private static final String RUNMANGERSHEET = "RUNMANAGER";
-	private static final String ITERATIONDATASHEET = "DATA";
-	private static final String EXTENTREPORTFOLDERPATH = System.getProperty("user.dir")+"/extent-test-output/";
-	private static String extentReportFilePath = "";
+	private static final @Getter int  EXPLICITWAIT = 10;
+	private static final @Getter String RESOURCESPATH = System.getProperty("user.dir")+"/resources";
+	private static final @Getter String CONFIGFILEPATH = RESOURCESPATH+"/config/config.properties";
+	private static final @Getter String EXCELPATH = RESOURCESPATH+"/excel/testdata.xlsx";
+	private static final @Getter String RUNMANGERSHEET = "RUNMANAGER";
+	private static final @Getter String ITERATIONDATASHEET = "DATA";
+	private static final @Getter String EXTENTREPORTFOLDERPATH = System.getProperty("user.dir")+"/extent-test-output/";
+	private static @Getter String extentReportFilePath = "";
 	
 
 	public static String getExtentReportFilePath()  {
@@ -39,34 +38,6 @@ public final class FrameworkConstants {
 			return EXTENTREPORTFOLDERPATH+"/index.html";
 		}
 	}
-	
-	
-	public static String getGeckoDriverPath() {
-		return GECKODRIVERPATH;
-	}
-
-	public static String getExcelpath() {
-		return EXCELPATH;
-	}
-
-	public static int getExplicitwait() {
-		return EXPLICITWAIT;
-	}
-	
-	public static String getRunmangerDatasheet() {
-		return RUNMANGERSHEET;
-	}
-	
-	public static String getIterationDatasheet() {
-		return ITERATIONDATASHEET;
-	}
-
-	public static String getConfigFilePath() {
-		return CONFIGFILEPATH;
-	}
-
-	public static String getChromeDriverPath() {
-		return CHROMEDRIVERPATH;
-	}
-
 }
+
+

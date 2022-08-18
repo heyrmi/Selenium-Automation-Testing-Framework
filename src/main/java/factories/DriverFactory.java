@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -16,23 +17,24 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import utils.PropertyUtils;
 
 /**
- * This class is responsible for assigning the webdriver based on the needs of user, it can be local or remote 
+ * This class is responsible for assigning the WebDriver based on the needs of user, it can be local or remote
  * (on a server or on docker)
  */
 public final class DriverFactory {
 
 	private DriverFactory() {}
 
-	public static WebDriver getDriver(String browser,String version) throws MalformedURLException {
+	public static WebDriver getDriver(String browserName,String version) throws MalformedURLException {
 
-		WebDriver driver=null;
+		WebDriver driver = null;
 
 		String runmode = PropertyUtils.get(ConfigProperties.RUNMODE);
-		if(browser.equalsIgnoreCase("chrome")) {
+		if(browserName.equalsIgnoreCase("chrome")) {
 			if(runmode.equalsIgnoreCase("remote")) {
+
 				DesiredCapabilities cap = new DesiredCapabilities();
-				cap.setBrowserName(BrowserType.CHROME);
-				cap.setVersion(version);
+				cap.setCapability("browserName", Browser.CHROME);
+				cap.setCapability("browserVersion", version);
 				driver =new RemoteWebDriver(new URL(PropertyUtils.get(ConfigProperties.SELENIUMGRIDURL)), cap);
 			}
 			else {
@@ -40,24 +42,24 @@ public final class DriverFactory {
 				driver = new ChromeDriver();
 			}
 		}
-		else if(browser.equalsIgnoreCase("firefox")) {
+		else if(browserName.equalsIgnoreCase("firefox")) {
 
 			if(runmode.equalsIgnoreCase("remote")) {
 				DesiredCapabilities cap = new DesiredCapabilities();
-				cap.setBrowserName(BrowserType.FIREFOX);
-				cap.setVersion(version);
+				cap.setCapability("browserName", Browser.FIREFOX);
+				cap.setCapability("browserVersion", version);
 				driver =new RemoteWebDriver(new URL(PropertyUtils.get(ConfigProperties.SELENIUMGRIDURL)), cap);
 			} else {
 				WebDriverManager.firefoxdriver().setup();
 				driver = new FirefoxDriver();
 			}
 		}
-		else if(browser.equalsIgnoreCase("edge")) {
+		else if(browserName.equalsIgnoreCase("edge")) {
 
 			if(runmode.equalsIgnoreCase("remote")) {
 				DesiredCapabilities cap = new DesiredCapabilities();
-				cap.setBrowserName(BrowserType.EDGE);
-				cap.setVersion(version);
+				cap.setCapability("browserName", Browser.EDGE);
+				cap.setCapability("browserVersion", version);
 				driver =new RemoteWebDriver(new URL(PropertyUtils.get(ConfigProperties.SELENIUMGRIDURL)), cap);
 			} else {
 				WebDriverManager.edgedriver().setup();

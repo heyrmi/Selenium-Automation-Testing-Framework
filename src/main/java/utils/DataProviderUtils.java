@@ -23,7 +23,7 @@ public final class DataProviderUtils {
 	public static Object[] getData(Method m) {
 		String testname = m.getName();
 		if(list.isEmpty()) {
-			list = ExcelUtils.getTestDetails(FrameworkConstants.getIterationDatasheet());
+			list = ExcelUtils.getTestDetails(FrameworkConstants.getITERATIONDATASHEET());
 			System.out.println(list);
 		}
 		

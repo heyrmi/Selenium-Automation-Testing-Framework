@@ -9,6 +9,8 @@ import constants.FrameworkConstants;
 import driver.DriverManager;
 import enums.WaitStrategy;
 
+import java.time.Duration;
+
 /**
  * This class is responsible for providing explicit wait on each element of the website. 
  */
@@ -20,15 +22,15 @@ public final class ExplicitWaitFactory {
 	public static WebElement performExplicitWait(WaitStrategy waitstrategy, By by) {
 		WebElement element = null;
 		if(waitstrategy == WaitStrategy.CLICKABLE) {
-			element = 	new WebDriverWait(DriverManager.getDriver(), FrameworkConstants.getExplicitwait())
+			element = 	new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(FrameworkConstants.getEXPLICITWAIT()))
 					.until(ExpectedConditions.elementToBeClickable(by));
 		}
 		else if(waitstrategy == WaitStrategy.PRESENCE) {
-			element =	new WebDriverWait(DriverManager.getDriver(), FrameworkConstants.getExplicitwait())
+			element =	new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(FrameworkConstants.getEXPLICITWAIT()))
 					.until(ExpectedConditions.presenceOfElementLocated(by));
 		}
 		else if(waitstrategy == WaitStrategy.VISIBLE) {
-			element =new WebDriverWait(DriverManager.getDriver(), FrameworkConstants.getExplicitwait())
+			element =new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(FrameworkConstants.getEXPLICITWAIT()))
 					.until(ExpectedConditions.visibilityOfElementLocated(by));
 		}
 		else if(waitstrategy == WaitStrategy.NONE) {
