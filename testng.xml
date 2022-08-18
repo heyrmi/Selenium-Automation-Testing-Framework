@@ -9,7 +9,8 @@
 
   <test thread-count="1" name="Test" parallel="methods">
     <classes>
-       <class name="tests.FlipkartAssignment"/>
+        <class name="tests.OrangeHRMTests"/>
+        <class name="tests.AmazonDemoTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

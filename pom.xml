@@ -19,7 +19,7 @@
 		<maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
 		<maven-compiler-plugin.version>3.9.0</maven-compiler-plugin.version>
 
-		<selenium.version>4.3.0</selenium.version>
+		<selenium.version>4.2.0</selenium.version>
 		<testng.version>7.6.1</testng.version>
 		<assertj.version>3.23.1</assertj.version>
 		<javafaker.version>1.0.2</javafaker.version>
@@ -28,6 +28,7 @@
 		<owner.version>1.0.12</owner.version>
 		<extent.version>5.0.9</extent.version>
 		<restassured.version>5.1.1</restassured.version>
+		<lombok.version>1.18.24</lombok.version>
 
 		<suite>testng</suite>
 	</properties>
@@ -149,6 +150,13 @@
 			<version>${owner.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -201,7 +209,7 @@
 	<!-- This profile execute the TestNG suite inside the suites folder on test/resources -->
 	<profiles>
 		<profile>
-			<id>web-execution</id>
+			<id>web-tests</id>
 			<build>
 				<plugins>
 					<plugin>

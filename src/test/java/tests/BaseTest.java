@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import driver.Driver;
 
 /**
- * This class is responsible for running the test cases and opening and closing of the desired browsers
+ * This class is responsible for running before the test cases and opening and closing of the desired browsers
  */
 public class BaseTest {
 	
@@ -27,7 +27,5 @@ public class BaseTest {
 	protected void tearDown() {
 		Driver.quitDriver();
 	}
-
-
 
 }

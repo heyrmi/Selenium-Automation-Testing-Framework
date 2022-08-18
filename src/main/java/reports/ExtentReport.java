@@ -12,21 +12,19 @@ import constants.FrameworkConstants;
 import enums.CategoryType;
 
 /**
- * This class is responsible for managing and initialising extent reports. 
+ * This class is responsible for managing and initialising extent reports.
  */
 public final class ExtentReport {
 
-
-	
-	private ExtentReport() {}
+	private ExtentReport() {
+	}
 
 	private static ExtentReports extent;
 
-	
 	public static void initReports() {
-		if(Objects.isNull(extent)) {
+		if (Objects.isNull(extent)) {
 			extent = new ExtentReports();
-			ExtentSparkReporter spark = new ExtentSparkReporter(FrameworkConstants.getExtentReportFilePath()); 
+			ExtentSparkReporter spark = new ExtentSparkReporter(FrameworkConstants.getExtentReportFilePath());
 			extent.attachReporter(spark);
 			spark.config().setTheme(Theme.STANDARD);
 			spark.config().setDocumentTitle("Flipkart");
@@ -34,37 +32,33 @@ public final class ExtentReport {
 		}
 	}
 
-	public static void flushReports(){
-		if(Objects.nonNull(extent)) {
+	public static void flushReports() {
+		if (Objects.nonNull(extent)) {
 			extent.flush();
 		}
 		ExtentManager.unload();
-		try {
-			Desktop.getDesktop().browse(new File(FrameworkConstants.getExtentReportFilePath()).toURI());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		// try {
+		// Desktop.getDesktop().browse(new
+		// File(FrameworkConstants.getExtentReportFilePath()).toURI());
+		// } catch (IOException e) {
+		// e.printStackTrace();
+		// }
 	}
 
-	
 	public static void createTest(String testcasename) {
 		ExtentManager.setExtentTest(extent.createTest(testcasename));
 	}
-	
-	
+
 	public static void addAuthors(String[] authors) {
-		for(String temp:authors) {
+		for (String temp : authors) {
 			ExtentManager.getExtentTest().assignAuthor(temp);
 		}
 	}
-	
+
 	public static void addCategories(CategoryType[] categories) {
-		for(CategoryType temp:categories) {
+		for (CategoryType temp : categories) {
 			ExtentManager.getExtentTest().assignCategory(temp.toString());
 		}
 	}
-
-
-
 
 }

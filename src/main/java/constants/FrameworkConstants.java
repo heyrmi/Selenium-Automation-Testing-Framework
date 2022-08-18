@@ -14,12 +14,12 @@ public final class FrameworkConstants {
 	private FrameworkConstants() {}
 	
 	private static final @Getter int  EXPLICITWAIT = 10;
-	private static final @Getter String RESOURCESPATH = System.getProperty("user.dir")+"/resources";
+	private static final @Getter String RESOURCESPATH = System.getProperty("user.dir")+"/src/test/resources";
 	private static final @Getter String CONFIGFILEPATH = RESOURCESPATH+"/config/config.properties";
 	private static final @Getter String EXCELPATH = RESOURCESPATH+"/excel/testdata.xlsx";
 	private static final @Getter String RUNMANGERSHEET = "RUNMANAGER";
 	private static final @Getter String ITERATIONDATASHEET = "DATA";
-	private static final @Getter String EXTENTREPORTFOLDERPATH = System.getProperty("user.dir")+"/extent-test-output/";
+	private static final @Getter String EXTENTREPORTFOLDERPATH = System.getProperty("user.dir")+"/reports/";
 	private static @Getter String extentReportFilePath = "";
 	
 

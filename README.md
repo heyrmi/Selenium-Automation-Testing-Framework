@@ -15,6 +15,6 @@ Data Driven Framework which uses Page Object Model design pattern for testing.
 
 ## Credits
 
-- This project originally belongs to [Amuthan Shaktivel](https://github.com/amuthansakthivel)
-
+- This framework was made by [Amuthan Shaktivel](https://github.com/amuthansakthivel), here is the [link](https://github.com/amuthansakthivel/SeleniumAutomationFramework_Youtube)
+- Enhancements are done on top of the framework
 

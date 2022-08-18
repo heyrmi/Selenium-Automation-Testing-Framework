@@ -1,0 +1,28 @@
+name: Cron tests in Github runner
+
+on:
+  schedule:
+    - cron: "0 08 * * 1-5"   #Run Monday to Friday @8AM
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Start Selenoid server
+        uses: n-ton4/selenoid-github-action@master
+        id: start-selenoid
+        continue-on-error: false
+        with:
+          version: 1.10.1
+          args: -limit 10
+          browsers: chrome
+          last-versions: 1
+
+      - name: Check Selenoid has been started
+        run: curl http://localhost:4444/status
+
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: Run the tests
+        continue-on-error: true
+        run: mvn -e -X clean test -Pweb-tests

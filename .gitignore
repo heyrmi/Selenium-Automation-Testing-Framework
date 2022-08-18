@@ -1,4 +1,4 @@
-# Ignore these files 
+# Ignore these files & folders
 .project
 .classpath
 .settings
@@ -6,6 +6,6 @@
 .vscode/
 .DS_Store
 /.settings
-/extent-test-output
 /target
 /test-output
+logs/
