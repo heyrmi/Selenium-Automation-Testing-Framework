@@ -8,6 +8,8 @@ import exceptions.BrowserInvocationFailedException;
 import factories.DriverFactory;
 import utils.PropertyUtils;
 
+import static config.FrameworkConfigManager.frameworkConfigManager;
+
 /**
  * This class is responsible for invoking the webdriver based on what user mentioned in excel
  */
@@ -26,11 +28,10 @@ public final class Driver {
 				throw new BrowserInvocationFailedException("Please check the capabilities of browser");
 			}
 			DriverManager.getDriver().manage().window().maximize();
-			DriverManager.getDriver().get(PropertyUtils.get(ConfigProperties.URL));
+			DriverManager.getDriver().get(frameworkConfigManager().url());
 			
 		}
 	}
-
 	
 	public static void quitDriver() {
 		if(Objects.nonNull(DriverManager.getDriver())) {

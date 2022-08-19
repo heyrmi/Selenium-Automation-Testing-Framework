@@ -4,17 +4,14 @@ on:
   workflow_dispatch:
     inputs:
       mavenProfile:
-        description: "web or anyother"
+        description: "Which maven profile to execute?"
         required: true
         default: "web-tests"
-      gridurl:
-        description: "selenoid url if hosted remote server"
-        required: true
-        default: "http://localhost:4444/wd/hub"
-      runmode:
-        description: "browserstack, selenoid"
+      platform:
+        description: "Where to run? browserstack or selenoid"
         required: true
         default: "selenoid"
+
 
 jobs:
   build:
@@ -38,4 +35,7 @@ jobs:
 
       - name: Run the tests
         continue-on-error: true
-        run: mvn clean test -P${{ github.event.inputs.mavenProfile }} -DremoteURL=${{ github.event.inputs.gridurl }} -Dtarget=${{ github.event.inputs.runmode }}
+        run: mvn clean test -P${{ github.event.inputs.mavenProfile }} -Dplatform=${{ github.event.inputs.platform }}
+        env:
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
