@@ -2,7 +2,8 @@ name: Cron tests in Github runner
 
 on:
   schedule:
-    - cron: "0 08 * * 1-5"   #Run Monday to Friday @8AM
+    #To run Monday to Friday @8AM use: '00 08 * * 1-5'
+    - cron: "00 08 * * 0"
 jobs:
   build:
     runs-on: ubuntu-latest
