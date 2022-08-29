@@ -1,4 +1,4 @@
-name: Report Deploy on GithubPages
+name: Report Deploy
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
 
       - name: Execute tests
         continue-on-error: true
-        run: mvn clean test -Pweb-tests --no-transfer-progress
+        run: mvn clean test -Pweb-tests -Drunmode=selenoid --no-transfer-progress
 
       - name: Deploy HTML Reports
         if: always()

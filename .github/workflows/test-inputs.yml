@@ -1,4 +1,5 @@
-name: Provide inputs in test workflow
+#TODO: Make the 'Start Selenoid server' a seperate task based on the inputs of runmode.
+name: Test Workflow Input
 
 on:
   workflow_dispatch:
@@ -7,11 +8,10 @@ on:
         description: "Which maven profile to execute?"
         required: true
         default: "web-tests"
-      platform:
+      runmode:
         description: "Where to run? browserstack or selenoid"
         required: true
         default: "selenoid"
-
 
 jobs:
   build:
@@ -35,7 +35,7 @@ jobs:
 
       - name: Run the tests
         continue-on-error: true
-        run: mvn clean test -P${{ github.event.inputs.mavenProfile }} -Dplatform=${{ github.event.inputs.platform }}
+        run: mvn clean test -P${{ github.event.inputs.mavenProfile }} -Drunmode=${{ github.event.inputs.platform }}
         env:
           BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
           BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}

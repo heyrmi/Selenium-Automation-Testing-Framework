@@ -3,6 +3,7 @@ package factories;
 import browser.BrowserCapabilities;
 import enums.ConfigProperties;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.SneakyThrows;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -33,83 +34,87 @@ public final class DriverFactory {
 	private DriverFactory() {
 	}
 
-	public static WebDriver getDriver(String browserName, String version) throws MalformedURLException {
-
-		// TODO: Optimise this!
+	public static WebDriver getDriver(String browserName, String browserVersion) throws MalformedURLException {
 
 		WebDriver driver = null;
 
 		String runmode = frameworkConfigManager().runmode();
-		String platform = frameworkConfigManager().platform();
 
-		if (browserName.equalsIgnoreCase("chrome")) {
-
-			if (runmode.equalsIgnoreCase("remote")) {
-				DesiredCapabilities cap = new DesiredCapabilities();
-				//Options for remote chrome
-				if (platform.equalsIgnoreCase("selenoid")) {
-				try {
-					cap.setCapability("browserName", "chrome");
-					cap.setCapability("enableVNC", false);
-					cap.setCapability("enableVideo", false);
-					driver = new RemoteWebDriver(new URL(frameworkConfigManager().seleniumgridurl()), cap);
-				} catch (java.net.MalformedURLException e) {
-					logger.error("Grid URL is invalid or Grid is not available");
-					}
-				}
-				else if(platform.equalsIgnoreCase("browserstack")){
-					cap.setCapability("browserName", "Chrome");
-					cap.setCapability("browserVersion", "latest");
-					driver = new RemoteWebDriver(
-							new URL("https://" + browserstack_username + ":" + browserstack_access_key
-									+ "@hub-cloud.browserstack.com/wd/hub"), cap);
-				}
-				//Selenium HUB
-				else{
-					cap.setBrowserName("chrome");
-					driver = new RemoteWebDriver(new URL(frameworkConfigManager().seleniumgridurl()), cap);
-				}
-				//Options for local chrome
-			} else {
-				WebDriverManager.chromedriver().setup();
-				driver = new ChromeDriver();
-				logger.info("Chrome driver launched");
-			}
-
-
-		} else if (browserName.equalsIgnoreCase("firefox")) {
-
-			if (runmode.equalsIgnoreCase("remote")) {
-				DesiredCapabilities cap = new DesiredCapabilities();
-				//Options for remote chrome
-				if (platform.equalsIgnoreCase("selenoid")) {
-					try {
-						cap.setCapability("browserName", "firefox");
-						cap.setCapability("enableVNC", false);
-						cap.setCapability("enableVideo", false);
-						driver = new RemoteWebDriver(new URL(frameworkConfigManager().seleniumgridurl()), cap);
-					} catch (java.net.MalformedURLException e) {
-						logger.error("Grid URL is invalid or Grid is not available");
-					}
-				}
-				else if(platform.equalsIgnoreCase("browserstack")){
-					cap.setCapability("browserName", "Firefox");
-					cap.setCapability("browserVersion", "latest");
-					driver = new RemoteWebDriver(
-							new URL("https://" + browserstack_username + ":" + browserstack_access_key
-									+ "@hub-cloud.browserstack.com/wd/hub"), cap);
-				}
-				//Selenium HUB
-				else{
-					cap.setBrowserName("firefox");
-					driver = new RemoteWebDriver(new URL(frameworkConfigManager().seleniumgridurl()), cap);
-				}
-			} else {
-				WebDriverManager.firefoxdriver().setup();
-				driver = new FirefoxDriver();
-				logger.info("Firefox driver launched");
-			}
+		if (runmode.equalsIgnoreCase("browserstack")) {
+			driver = browserStackDriver(browserName, browserVersion);
+		} else if (runmode.equalsIgnoreCase("selenoid")) {
+			driver = selenoidDriver(browserName, browserVersion);
+		} else if (runmode.equalsIgnoreCase("local")) {
+			driver = localDriver(browserName, browserVersion);
 		}
 		return driver;
 	}
+
+
+	@SneakyThrows
+	private static WebDriver browserStackDriver(String browserName, String browserVersion) {
+		// TODO: Utilise browserVersion, os, os_version
+		// TODO: add a browsername as Enum, so no other name can be passed
+		logger.info("Browser is: " + browserName);
+		logger.info("Browser version is: " + browserVersion);
+		logger.info("Will run test in BrowserStack");
+
+		WebDriver brwoserstackdriver = null;
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("os", "Windows");
+		capabilities.setCapability("os_version", "11");
+		capabilities.setCapability("build", "Automation Testing");
+		capabilities.setCapability("browser", browserName);
+		capabilities.setCapability("browserVersion", "latest");
+		brwoserstackdriver = new RemoteWebDriver(new URL("https://" + browserstack_username + ":" + browserstack_access_key
+						+ "@hub-cloud.browserstack.com/wd/hub"), capabilities);
+
+		return brwoserstackdriver;
+	}
+
+	@SneakyThrows
+	private static WebDriver selenoidDriver(String browserName, String browserVersion) {
+
+		logger.info("Browser is: " + browserName);
+		logger.info("Browser version is: " + browserVersion);
+		logger.info("Will run test in Selenoid");
+
+		WebDriver selenoiddriver = null;
+		DesiredCapabilities capabilities = new DesiredCapabilities();
+		capabilities.setCapability("browserName", browserName);
+		capabilities.setCapability("enableVNC", false);
+		capabilities.setCapability("enableVideo", false);
+		selenoiddriver = new RemoteWebDriver(new URL(frameworkConfigManager().seleniumgridurl()), capabilities);
+
+		return selenoiddriver;
+	}
+
+
+	private static WebDriver localDriver(String browserName, String browserVersion) {
+
+		logger.info("Browser is: " + browserName);
+		logger.info("Browser version is: " + browserVersion);
+		logger.info("We don't have provision for browserVersion in local");
+		logger.info("Will run test in Local");
+
+		WebDriver localdriver = null;
+		switch (browserName) {
+			case "chrome":
+				WebDriverManager.chromedriver().setup();
+				localdriver = new ChromeDriver();
+				logger.info("Chrome driver launched");
+				break;
+			case "firefox":
+				WebDriverManager.firefoxdriver().setup();
+				localdriver = new FirefoxDriver();
+				logger.info("Firefox driver launched");
+				break;
+			default:
+				logger.info("No browser selected. Please select one");
+				break;
+		}
+		return localdriver;
+	}
+
+
 }

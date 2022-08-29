@@ -9,7 +9,7 @@ import org.aeonbits.owner.Config;
         "file:${user.dir}/src/test/resources/config/config.properties"
 })
 
-public interface FrameworkConfig extends Config{
+public interface FrameworkConfig extends Config {
     // TODO: Transform this to follow different environment structures
 
     @Key("url")
@@ -32,12 +32,8 @@ public interface FrameworkConfig extends Config{
     Boolean retryfailedtests();
 
     @Key("runmode")
-    @DefaultValue("remote")
-    String runmode();
-
-    @Key("platform")
     @DefaultValue("selenoid")
-    String platform();
+    String runmode();
 
     @Key("sendresulttoelk")
     @DefaultValue("false")
