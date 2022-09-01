@@ -31,7 +31,7 @@ jobs:
         run: curl http://localhost:4444/status
 
       - name: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Run the tests
         continue-on-error: true
