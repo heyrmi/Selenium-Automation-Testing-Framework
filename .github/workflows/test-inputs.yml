@@ -13,6 +13,10 @@ on:
         required: true
         default: "selenoid"
 
+env:
+  BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+  BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,6 +40,3 @@ jobs:
       - name: Run the tests
         continue-on-error: true
         run: mvn clean test -P${{ github.event.inputs.mavenProfile }} -Drunmode=${{ github.event.inputs.platform }}
-        env:
-          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
-          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
