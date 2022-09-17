@@ -1,3 +1,7 @@
+[![Test](https://github.com/heyrmi/Selenium-Automation-Testing-Framework/actions/workflows/cron-test.yml/badge.svg?branch=master)](https://github.com/heyrmi/Selenium-Automation-Testing-Framework/actions/workflows/cron-test.yml)
+[![Report](https://github.com/heyrmi/Selenium-Automation-Testing-Framework/actions/workflows/deploy-reports.yml/badge.svg?branch=master)](https://github.com/heyrmi/Selenium-Automation-Testing-Framework/actions/workflows/deploy-reports.yml)
+[![Manual Triggers](https://github.com/heyrmi/Selenium-Automation-Testing-Framework/actions/workflows/test-inputs.yml/badge.svg?branch=master)](https://github.com/heyrmi/Selenium-Automation-Testing-Framework/actions/workflows/test-inputs.yml)
+
 # Selenium Automation Testing Framework
 
 Data Driven Framework which uses Page Object Model design pattern for testing. 
