@@ -1,11 +1,11 @@
 package factories;
 
-import browser.BrowserCapabilities;
 import enums.ConfigProperties;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.SneakyThrows;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -16,6 +16,7 @@ import utils.PropertyUtils;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 
 import static config.FrameworkConfigManager.frameworkConfigManager;
 
@@ -50,7 +51,6 @@ public final class DriverFactory {
 		return driver;
 	}
 
-
 	@SneakyThrows
 	private static WebDriver browserStackDriver(String browserName, String browserVersion) {
 		// TODO: Utilise browserVersion, os, os_version
@@ -66,8 +66,10 @@ public final class DriverFactory {
 		capabilities.setCapability("build", "Automation Testing");
 		capabilities.setCapability("browser", browserName);
 		capabilities.setCapability("browserVersion", "latest");
-		brwoserstackdriver = new RemoteWebDriver(new URL("https://" + browserstack_username + ":" + browserstack_access_key
-						+ "@hub-cloud.browserstack.com/wd/hub"), capabilities);
+		brwoserstackdriver = new RemoteWebDriver(
+				new URL("https://" + browserstack_username + ":" + browserstack_access_key
+						+ "@hub-cloud.browserstack.com/wd/hub"),
+				capabilities);
 
 		return brwoserstackdriver;
 	}
@@ -88,7 +90,6 @@ public final class DriverFactory {
 
 		return selenoiddriver;
 	}
-
 
 	private static WebDriver localDriver(String browserName, String browserVersion) {
 
@@ -115,6 +116,5 @@ public final class DriverFactory {
 		}
 		return localdriver;
 	}
-
 
 }

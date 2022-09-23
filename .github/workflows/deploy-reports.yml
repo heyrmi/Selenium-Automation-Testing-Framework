@@ -25,7 +25,6 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Execute tests
-        continue-on-error: true
         run: mvn clean test -Pweb-tests -Drunmode=selenoid --no-transfer-progress
 
       - name: Deploy HTML Reports
