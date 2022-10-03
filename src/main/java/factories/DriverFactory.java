@@ -1,6 +1,5 @@
 package factories;
 
-import enums.ConfigProperties;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.SneakyThrows;
 import org.apache.logging.log4j.LogManager;
@@ -8,11 +7,9 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import utils.PropertyUtils;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -60,18 +57,25 @@ public final class DriverFactory {
 		logger.info("Will run test in BrowserStack");
 
 		WebDriver brwoserstackdriver = null;
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("os", "Windows");
-		capabilities.setCapability("os_version", "11");
-		capabilities.setCapability("build", "Automation Testing");
+
+		MutableCapabilities capabilities = new MutableCapabilities();
 		capabilities.setCapability("browser", browserName);
 		capabilities.setCapability("browserVersion", "latest");
+		HashMap<String, Object> browserstackOptions = new HashMap<String, Object>();
+		browserstackOptions.put("os", "Windows");
+		browserstackOptions.put("osVersion", "10");
+		browserstackOptions.put("projectName", "Selenium Automation Project");
+		browserstackOptions.put("buildName", "Smoke");
+		browserstackOptions.put("sessionName", "Menu Check");
+		browserstackOptions.put("local", "false");
+		capabilities.setCapability("bstack:options", browserstackOptions);
 		brwoserstackdriver = new RemoteWebDriver(
 				new URL("https://" + browserstack_username + ":" + browserstack_access_key
 						+ "@hub-cloud.browserstack.com/wd/hub"),
 				capabilities);
 
 		return brwoserstackdriver;
+
 	}
 
 	@SneakyThrows
