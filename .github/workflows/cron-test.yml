@@ -1,6 +1,9 @@
 name: Cron Test
 
 on:
+  pull_request:
+    branches:    
+      - master
   schedule:
     #To run Monday to Friday @8AM use: '00 08 * * 1-5'
     - cron: "00 08 * * 0"
