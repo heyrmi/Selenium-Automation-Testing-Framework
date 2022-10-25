@@ -33,3 +33,10 @@ jobs:
         with:
           branch: gh-pages
           folder: ./reports
+
+      - name: Upload Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Extent-Report
+          path: ./reports
