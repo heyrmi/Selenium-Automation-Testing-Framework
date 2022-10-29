@@ -36,7 +36,7 @@ jobs:
           folder: ./reports
 
       - name: Upload Report
-        if: steps.execute-tests.outcome == 'failure'
+        if: failure() && steps.execute-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: Extent-Report
