@@ -25,6 +25,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Execute tests
+        id: execute-tests
         run: mvn clean test -Pweb-tests -Drunmode=selenoid --no-transfer-progress
 
       - name: Deploy HTML Reports
@@ -35,7 +36,7 @@ jobs:
           folder: ./reports
 
       - name: Upload Report
-        if: always()
+        if: steps.execute-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: Extent-Report
