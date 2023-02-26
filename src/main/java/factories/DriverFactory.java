@@ -105,12 +105,14 @@ public final class DriverFactory {
 		WebDriver localdriver = null;
 		switch (browserName) {
 			case "chrome":
-				WebDriverManager.chromedriver().setup();
+				// Removing WebdriverManager since we do not require this after selenium: 4.6
+				// WebDriverManager.chromedriver().setup();
 				localdriver = new ChromeDriver();
 				logger.info("Chrome driver launched");
 				break;
 			case "firefox":
-				WebDriverManager.firefoxdriver().setup();
+				// Removing WebdriverManager since we do not require this after selenium: 4.6
+				// WebDriverManager.firefoxdriver().setup();
 				localdriver = new FirefoxDriver();
 				logger.info("Firefox driver launched");
 				break;
